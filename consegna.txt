@@ -29,7 +29,7 @@ ______________________________________________________________________________
 
 SELECT * 
 FROM `students` 
-WHERE YEAR(`date_of_birth`) < 1993;
+WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) > 30;
 
 
 
@@ -63,6 +63,10 @@ ______________________________________________________________________________
 
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
+
+SELECT *
+FROM `degrees`
+WHERE `level` = 'magistrale';
 
 ______________________________________________________________________________
 
@@ -119,9 +123,14 @@ ______________________________________________________________________________
 
 3. Calcolare la media dei voti di ogni appello d'esame
 
+SELECT AVG(`vote`), `exam_id`
+FROM `exam_student`
+GROUP BY (`exam_id`);;
+
 ______________________________________________________________________________
 
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
 
 
 
